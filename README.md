@@ -7,4 +7,4 @@ make template
 css rest
 
 
-ideas  mode7  pags
+ideas  mode7  messing with images
