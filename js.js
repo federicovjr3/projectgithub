@@ -1,32 +1,28 @@
-  
-var c = document.getElementById("viewport");
-  
- var ctx = c.getContext("2d");
+const canvas = document.getElementById('viewport');
+const ctx = canvas.getContext('2d');
 
+var img1 = new Image();
 
- const img = new Image();
+ img1.src = "Gemini_Generated_Image_bg99x6bg99x6bg99.bmp";
 
-  img.src = "Gemini_Generated_Image_bg99x6bg99x6bg99.bmp"
+img1.onload = function() {
 
-   img.onload = function () {
+ ctx.drawImage(img1, 0, 0);
 
+const imageData = ctx.getImageData(0, 0, img1.width, img1.height);
+const pixels = imageData.data;
 
- const pixel = ctx.getImageData(0,0,  c.width, c.height);
-const data =  pixel.data;
-
-for (var y = 0; y <  480; y++) {
- index = ( 0 + y * Image.width) * 4; 
-    data[index + 0] =   255;
-    data[index + 1] =  255;
-    data[index + 2]  = 0;
-    data[index + 3] = 0;
-  ctx.putImageData(pixel,  0, 0);
+for (let i = 0; i < pixels.length; i += 4) {
+  const r = pixels[i];
+  const g = pixels[i + 1];
+  const b = pixels[i + 2];
+  const avg = (r + g + b) / 3;
+  const  value = avg > 240 ? 255 : 0;
+  pixels[i] = value;     
+  pixels[i + 1] = value; 
+  pixels[i + 2] = value; 
 }
-   ctx.drawImage(img, 0 , 0); 
+ctx.putImageData(imageData, 0, 0);
+};
 
- };
-    
 
- console.log("yeah");
-
- 
