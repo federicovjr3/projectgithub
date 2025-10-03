@@ -1,0 +1,12 @@
+body{
+    background-color: lightgray;
+}
+h1{
+    text-align: center;
+    background-color: rgb(55, 55, 219);
+    color: black;
+}
+p{
+    margin-right: 500px;
+
+}
